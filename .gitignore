@@ -1,0 +1,30 @@
+# build artifacts
+*.o
+*.ko
+*.mod
+*.mod.c
+*.cmd
+*.txt
+
+# kernel build
+Module.symvers
+modules.order
+
+# logs
+*.log
+
+# editor
+.vscode/
+
+vscode
+
+docs
+
+.clinerules
+
+.clineignore
+
+.kiro
+
+memory-bank
+
