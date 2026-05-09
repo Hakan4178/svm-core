@@ -556,20 +556,7 @@ int status = 0;
 	asm volatile("mov %0, %%db1" ::"r"(0xDEAD1337BEEF0001ULL));
 
 	SvDebugPrint("Attempting to virtualize the processor.\n");
-
-	// Validate SharedVpData structure to prevent arbitrary memory access
-	if (sharedVpData == NULL || sharedVpData->Magic != SSVM_SHARED_DATA_MAGIC) {
-		pr_err("[SimpleSvm] Invalid SharedVpData structure: magic=0x%llx (expected "
-		       "0x%llx)\n",
-		       sharedVpData ? (unsigned long long)sharedVpData->Magic : 0ULL,
-		       (unsigned long long)SSVM_SHARED_DATA_MAGIC);
-		this_cpu_write(ssvm_virtualized, false);
-		SvFreeContiguousMemory(vpData, sizeof(VIRTUAL_PROCESSOR_DATA));
-		local_irq_enable();
-		preempt_enable();
-		return -EFAULT;
-	}
-
+		
 	// Check for AMD CPU
 	unsigned int eax, ebx, ecx, edx;
 	cpuid(0, &eax, &ebx, &ecx, &edx);
