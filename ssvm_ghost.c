@@ -206,26 +206,26 @@ static int PrepareForVirtualization(_Inout_ PVIRTUAL_PROCESSOR_DATA VpData,
 	msrpmPa = ssvm_virt_to_phys(SharedVpData->MsrPermissionsMap);
 
 	// Debug: Log physical addresses
-	pr_info("[SimpleSvm] CPU%d: GuestVmcb VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: GuestVmcb VA=%px PA=0x%llx\n", smp_processor_id(),
 		&VpData->GuestVmcb, guestVmcbPa);
-	pr_info("[SimpleSvm] CPU%d: HostVmcb VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: HostVmcb VA=%px PA=0x%llx\n", smp_processor_id(),
 		&VpData->HostVmcb, hostVmcbPa);
-	pr_info("[SimpleSvm] CPU%d: HostStateArea VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: HostStateArea VA=%px PA=0x%llx\n", smp_processor_id(),
 		&VpData->HostStateArea, hostStateAreaPa);
 
 	// Verify VIRTUAL ADDRESS alignment (struct member alignment)
 	if (!IS_ALIGNED((unsigned long)&VpData->GuestVmcb, PAGE_SIZE)) {
-		pr_err("[SimpleSvm] CPU%d: FATAL - GuestVmcb VA not 4KB aligned! VA=%p\n",
+		pr_err("[SimpleSvm] CPU%d: FATAL - GuestVmcb VA not 4KB aligned! VA=%px\n",
 		       smp_processor_id(), &VpData->GuestVmcb);
 		return -EFAULT;
 	}
 	if (!IS_ALIGNED((unsigned long)&VpData->HostVmcb, PAGE_SIZE)) {
-		pr_err("[SimpleSvm] CPU%d: FATAL - HostVmcb VA not 4KB aligned! VA=%p\n",
+		pr_err("[SimpleSvm] CPU%d: FATAL - HostVmcb VA not 4KB aligned! VA=%px\n",
 		       smp_processor_id(), &VpData->HostVmcb);
 		return -EFAULT;
 	}
 	if (!IS_ALIGNED((unsigned long)&VpData->HostStateArea, PAGE_SIZE)) {
-		pr_err("[SimpleSvm] CPU%d: FATAL - HostStateArea VA not 4KB aligned! VA=%p\n",
+		pr_err("[SimpleSvm] CPU%d: FATAL - HostStateArea VA not 4KB aligned! VA=%px\n",
 		       smp_processor_id(), &VpData->HostStateArea);
 		return -EFAULT;
 	}
