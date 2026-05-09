@@ -484,7 +484,7 @@ int __attribute__((no_stack_protector)) VirtualizeProcessor(_In_opt_ void * Cont
 	memset(&vpData->HostVmcb, 0, sizeof(VMCB));
 	memset(&vpData->HostStateArea, 0, PAGE_SIZE);
 
-	pr_info("[SimpleSvm] CPU%d: VpData allocated at VA=%p size=%zu\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: VpData allocated at VA=%px size=%zu\n", smp_processor_id(),
 		vpData, sizeof(VIRTUAL_PROCESSOR_DATA));
 
 
@@ -495,11 +495,11 @@ int __attribute__((no_stack_protector)) VirtualizeProcessor(_In_opt_ void * Cont
 	msrpmPa = ssvm_virt_to_phys(sharedVpData->MsrPermissionsMap);
 
 	// Debug: Log physical addresses
-	pr_info("[SimpleSvm] CPU%d: GuestVmcb VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: GuestVmcb VA=%px PA=0x%llx\n", smp_processor_id(),
 		&vpData->GuestVmcb, guestVmcbPa);
-	pr_info("[SimpleSvm] CPU%d: HostVmcb VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: HostVmcb VA=%px PA=0x%llx\n", smp_processor_id(),
 		&vpData->HostVmcb, hostVmcbPa);
-	pr_info("[SimpleSvm] CPU%d: HostStateArea VA=%p PA=0x%llx\n", smp_processor_id(),
+	pr_info("[SimpleSvm] CPU%d: HostStateArea VA=%px PA=0x%llx\n", smp_processor_id(),
 		&vpData->HostStateArea, hostStateAreaPa);
 
 	// Clear aligned pointers since we're not using them
