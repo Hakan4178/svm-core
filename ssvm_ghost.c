@@ -451,7 +451,11 @@ static int PrepareForVirtualization(_Inout_ PVIRTUAL_PROCESSOR_DATA VpData,
     ========================================================================= */
 int __attribute__((no_stack_protector)) VirtualizeProcessor(_In_opt_ void * Context)
 {
-	int status = 0;
+
+pr_info("[SimpleSvm] sizeof VIRTUAL_PROCESSOR_DATA = %zu\n", sizeof(VIRTUAL_PROCESSOR_DATA));
+    pr_info("[SimpleSvm] offsetof HostStateArea = %zu\n", offsetof(VIRTUAL_PROCESSOR_DATA, HostStateArea));
+	
+int status = 0;
 	PSHARED_VIRTUAL_PROCESSOR_DATA sharedVpData;
 	PVIRTUAL_PROCESSOR_DATA vpData = NULL;
 	SSVM_CONTEXT contextRecord;
