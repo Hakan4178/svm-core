@@ -555,6 +555,8 @@ int status = 0;
 	/* HOST PATH: First execution, prepare for virtualization */
 	asm volatile("mov %0, %%db1" ::"r"(0xDEAD1337BEEF0001ULL));
 
+	sharedVpData = (PSHARED_VIRTUAL_PROCESSOR_DATA)Context;
+
 	SvDebugPrint("Attempting to virtualize the processor.\n");
 		
 	// Check for AMD CPU
