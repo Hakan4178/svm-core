@@ -518,6 +518,8 @@ int status = 0;
 	preempt_disable();
 	local_irq_disable();
 
+    this_cpu_write(ssvm_vpdata, vpData); 
+
 	// Capture segments, GDTR, IDTR, callee-saved regs, RFLAGS
 	// Experimental: Use DR1 as a per-CPU, compiler-safe marker
 	asm volatile("mov %0, %%db1" ::"r"(0ULL));
@@ -559,6 +561,7 @@ int status = 0;
 	asm volatile("mov %0, %%db1" ::"r"(0xDEAD1337BEEF0001ULL));
 
 	sharedVpData = (PSHARED_VIRTUAL_PROCESSOR_DATA)Context;
+	vpData = this_cpu_read(ssvm_vpdata);
 
 	SvDebugPrint("Attempting to virtualize the processor.\n");
 		
