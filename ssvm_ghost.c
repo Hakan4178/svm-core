@@ -27,6 +27,9 @@ atomic_t sv_devirt_count = ATOMIC_INIT(0);
 // Global shared data pointer for cleanup during devirtualization
 PSHARED_VIRTUAL_PROCESSOR_DATA g_sharedVpData = NULL;
 
+//Patch
+static DEFINE_PER_CPU(PVIRTUAL_PROCESSOR_DATA, ssvm_vpdata) = NULL;
+
 // Global init_mm pointer (found via kprobe at module init)
 static struct mm_struct *g_init_mm = NULL;
 
