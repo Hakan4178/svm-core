@@ -561,6 +561,9 @@ int status = 0;
 
 	/* HOST PATH: First execution, prepare for virtualization */
 	asm volatile("mov %0, %%db1" ::"r"(0xDEAD1337BEEF0001ULL));
+	// Pointer'ları Per-CPU üzerinden geri yükle
+    vpData = this_cpu_read(ssvm_vpdata);
+    sharedVpData = this_cpu_read(ssvm_shared);
 
 	sharedVpData = (PSHARED_VIRTUAL_PROCESSOR_DATA)Context;
 	vpData = this_cpu_read(ssvm_vpdata);
