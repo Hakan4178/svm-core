@@ -520,6 +520,7 @@ int status = 0;
 	local_irq_disable();
 
     this_cpu_write(ssvm_vpdata, vpData); 
+    this_cpu_write(ssvm_shared, sharedVpData);
 
 	// Capture segments, GDTR, IDTR, callee-saved regs, RFLAGS
 	// Experimental: Use DR1 as a per-CPU, compiler-safe marker
