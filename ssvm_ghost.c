@@ -29,6 +29,7 @@ PSHARED_VIRTUAL_PROCESSOR_DATA g_sharedVpData = NULL;
 
 //Patch
 static DEFINE_PER_CPU(PVIRTUAL_PROCESSOR_DATA, ssvm_vpdata) = NULL;
+static DEFINE_PER_CPU(PSHARED_VIRTUAL_PROCESSOR_DATA, ssvm_shared) = NULL;
 
 // Global init_mm pointer (found via kprobe at module init)
 static struct mm_struct *g_init_mm = NULL;
