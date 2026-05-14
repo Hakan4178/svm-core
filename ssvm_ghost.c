@@ -565,9 +565,6 @@ int status = 0;
     vpData = this_cpu_read(ssvm_vpdata);
     sharedVpData = this_cpu_read(ssvm_shared);
 
-	sharedVpData = (PSHARED_VIRTUAL_PROCESSOR_DATA)Context;
-	vpData = this_cpu_read(ssvm_vpdata);
-
 	SvDebugPrint("Attempting to virtualize the processor.\n");
 		
 	// Check for AMD CPU
