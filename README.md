@@ -5,7 +5,7 @@
 A minimal, production-quality type-1.5 hypervisor demonstrating AMD-V virtualization technology. This project implements a bluepill style hypervisor that virtualizes a running Linux system transparently.
 
 [![License: GPL-2.0](https://img.shields.io/badge/License-GPL--2.0-blue.svg)](LICENSE)
-[![Kernel: 6.x-7.x](https://img.shields.io/badge/Kernel-5.x--6.x-green.svg)]()
+[![Kernel: 6.x-7.x](https://img.shields.io/badge/Kernel-6.x--7.x-green.svg)]()
 [![Arch: x86_64](https://img.shields.io/badge/Arch-x86__64-orange.svg)]()
 
 ---
@@ -18,6 +18,7 @@ A minimal, production-quality type-1.5 hypervisor demonstrating AMD-V virtualiza
 - **Multi-Core**: Per-CPU virtualization with ASID-based TLB isolation
 - **Minimal Overhead**: ~100-1000 VMEXITs/sec (CPUID intercepts only)
 - **Safe Stack**: 64KB isolated stack prevents guest corruption
+- **Tested on**: Arch 7.04, Debian 6.12.x 
 
 ### Advanced Features
 - **Statik NPT**: page table allocator 1TB (2MB Huge Pages)
